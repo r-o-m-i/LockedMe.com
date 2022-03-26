@@ -23,7 +23,7 @@ public interface UI {
 	 * active context type
 	 */
 	
-	public enum context{MAIN_MENU, LIST_ALL_FILES, ADD_FILE, DELETE_FILE, SEARCH_FILE};
+	public enum context{MAIN_MENU, FILE_MANAGER, LIST_ALL_FILES, ADD_FILE, DELETE_FILE, SEARCH_FILE};
 	
 	/**
 	 * displays welcome message
@@ -49,7 +49,13 @@ public interface UI {
 	 * prompts for user choice for list all files sub context
 	 */
 	public int promptUserChoiceForListAllFilesContext();
-
+	
+	/**
+	 * displays file manager context
+	 */
+	
+	public void displayFileManagerContext();
+	
 	/**
 	 * displays a sub context where user can choose between listing all files, deleting a file or returning to the main context.<br>
 	 */
