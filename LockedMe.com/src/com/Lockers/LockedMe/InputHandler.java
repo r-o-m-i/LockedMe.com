@@ -1,8 +1,6 @@
 package com.Lockers.LockedMe;
 
 import java.io.File;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  *Handles user input and produces appropriate output
@@ -38,12 +36,5 @@ public abstract class InputHandler extends FileHandler {
 	 */
 	protected abstract void handleMenuInput();
 	
-	
-	@Override
-	protected List<File> listAllFiles() {
-		List<File> files = Arrays.asList(filesDirectory.listFiles());
-		files.sort((f1,f2)->f1.getName().compareTo(f2.getName()));
-		return files;
-	}
 	
 }

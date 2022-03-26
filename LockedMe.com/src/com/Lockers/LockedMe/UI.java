@@ -32,9 +32,5 @@ public interface UI {
 	 * used to close the initialized resources.<br>
 	 */
 	public void closeResources();
-	/**
-	 * prompts user for a file name
-	 */
-	public String promptFileName();
 	
 }

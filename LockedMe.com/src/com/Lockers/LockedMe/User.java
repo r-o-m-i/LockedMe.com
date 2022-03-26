@@ -1,7 +1,6 @@
 package com.Lockers.LockedMe;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -14,7 +13,7 @@ public class User extends InputHandler implements UI {
 		super();
 		output.info("Directory Created");
 	}
-	
+
 	//	Hover on overridden methods to see documentation.
 	@Override
 	public void welcome()
@@ -30,15 +29,11 @@ public class User extends InputHandler implements UI {
 	public void closeResources() {
 		input.close();
 	}
-	
-	@Override
-	public String promptFileName() {
-		output.info("Please enter a file name: ");
-		return input.nextLine();
-	}
-	
-//	Input handling
-	
+
+
+
+	//	Input handling
+
 	private int promptUserChoiceForMenu() 
 	{
 		output.info("Please enter your choice: ");
@@ -47,19 +42,17 @@ public class User extends InputHandler implements UI {
 
 		while(choice < 1 || choice > 5)
 		{
-		output.info("Please enter a valid choice: ");
+			output.info("Please enter a valid choice: ");
 			choice = input.nextInt();
 		}
 		return choice;
 	}
-	
+
 	@Override
 	protected void handleMenuInput()
 	{
 		int choice = promptUserChoiceForMenu();
-		List<File> files = listAllFiles();
-		String fileName = null;
-		
+		List<File> files = listAllFiles(filesDirectory);
 		switch(choice)
 		{
 		case 1: 
@@ -73,75 +66,24 @@ public class User extends InputHandler implements UI {
 			}
 			break;
 		case 2: 
-			fileName = promptFileName();
-			File newFile = new File("Files/" + fileName);
-			if(files.contains(newFile))
-			{
-				output.info(fileName + " already exists.");
-			}
-			else
-			{
-				try {
-					boolean creationSuccessful = newFile.createNewFile();
-					if(creationSuccessful)
-					{
-						output.info(fileName + " added successfully.");
-					}
-					else
-					{
-						output.info(fileName + " file can not be added.");
-					}
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
+			addFile(filesDirectory);
 			break;
 		case 3:
-			fileName = promptFileName();
-			files = listAllFiles();
-			File trash = new File("Files/" + fileName);
-			
-			if(files.contains(trash))
-			{
-				try {
-				if(files.get(files.indexOf(trash)).delete())
-					output.info(fileName + " deleted successfully.");
-				else
-					output.info("Cannot delete file: " + fileName);
-				}
-				catch(Exception e)
-				{
-					e.printStackTrace();
-				}
-			}
-			else
-			{
-				output.info("File: \"" + fileName + "\" does not exist.");
-			}
+			deleteFile(filesDirectory);
 			break;
 		case 4:
-			fileName = promptFileName();
-			files = listAllFiles();
-			File findFile = new File("Files/" + fileName);
-			
-			if(files.contains(findFile))
-			{
-				output.info(fileName + " exists at: " + files.get(files.indexOf(findFile)).getAbsolutePath());
-			}
-			else
-			{
-				output.info("File: \"" + fileName + "\" does not exist.");
-			}
-			
+			searchFile(filesDirectory);
 			break;
 		case 5:
 			output.info("End of program");
+			//	closing all the resources before ending the program.
+			this.closeResources();
 			System.exit(0);
 			break;
 		default:
 			break;
 		}
 	}
-	
-	
+
+
 }
