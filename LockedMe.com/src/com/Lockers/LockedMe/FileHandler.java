@@ -39,8 +39,14 @@ public abstract class FileHandler {
 	protected void addFile(File filesDirectory)
 	{
 		List<File> files = listAllFiles(filesDirectory);
+
+		UI.output.info(GlobalConstants.STARS + "Adding files to the directory.\n\nExisting files:" + GlobalConstants.STARS);
+		files.forEach(file->UI.output.info(file.getName()));
+		UI.output.info(GlobalConstants.STARS);
+		
 		String fileName = promptFileName();
 		File newFile = new File("Files/" + fileName);
+		
 		if(files.contains(newFile))
 		{
 			UI.output.info(fileName + " already exists.");
@@ -51,7 +57,10 @@ public abstract class FileHandler {
 				boolean creationSuccessful = newFile.createNewFile();
 				if(creationSuccessful)
 				{
-					UI.output.info(fileName + " added successfully.");
+					UI.output.info(GlobalConstants.STARS + fileName + " added successfully.\nUpdated files:" + GlobalConstants.STARS);
+					files = listAllFiles(filesDirectory);
+					files.forEach(file->System.out.println(file.getName()));
+					UI.output.info(GlobalConstants.STARS);
 				}
 				else
 				{
@@ -61,6 +70,8 @@ public abstract class FileHandler {
 				e.printStackTrace();
 			}
 		}
+		
+		
 	}
 	
 	/**
@@ -71,6 +82,11 @@ public abstract class FileHandler {
 	protected void deleteFile(File filesDirectory)
 	{
 		List<File> files = listAllFiles(filesDirectory);
+		
+		UI.output.info(GlobalConstants.STARS + "Deleting files from the directory.\n\nExisting files:" + GlobalConstants.STARS);
+		files.forEach(file->UI.output.info(file.getName()));
+		UI.output.info(GlobalConstants.STARS);
+		
 		String fileName = promptFileName();
 		File trash = new File("Files/" + fileName);
 		
@@ -78,7 +94,13 @@ public abstract class FileHandler {
 		{
 			try {
 			if(files.get(files.indexOf(trash)).delete())
-				UI.output.info(fileName + " deleted successfully.");
+			{
+				UI.output.info(GlobalConstants.STARS + fileName + " deleted successfully.\nUpdated files:" + GlobalConstants.STARS);
+				files = listAllFiles(filesDirectory);
+				files.forEach(file->System.out.println(file.getName()));
+				UI.output.info(GlobalConstants.STARS);
+				
+			}
 			else
 				UI.output.info("Cannot delete file: " + fileName);
 			}

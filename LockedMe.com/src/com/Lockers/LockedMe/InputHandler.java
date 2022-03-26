@@ -32,9 +32,20 @@ public abstract class InputHandler extends FileHandler {
 	
 	
 	/**
-	 * prompts for and handles the user input.
+	 * prompts for and handles the user input for main context.
 	 */
 	protected abstract void handleMenuInput();
+	
+	/**
+	 * prompts for and handles the user input for list all files context.
+	 */	
+	protected abstract void handleListAllfilesContextInput();
+	
+	/**
+	 * prompts for and handles the user input for add file context.
+	 */
+	protected abstract void handleSubContext();
+	
 	
 	
 }

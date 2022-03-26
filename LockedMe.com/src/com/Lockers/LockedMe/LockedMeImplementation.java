@@ -9,19 +9,8 @@ public class LockedMeImplementation {
 		
 //		creating user object	
 		User user = new User();
+//		looping through the active context
+		user.loopActiveContext();
 		
-//		displaying welcome message
-		user.welcome();
-		
-//		displaying menu
-		while(user.isRunning())
-		{
-			user.displayMenu();
-			
-			UI.output.info("\n*****************************************************************\n*****************************************************************\n");
-		}
-		
-//		closing all the resources created by user
-		user.closeResources();
 	}
 }

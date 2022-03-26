@@ -20,6 +20,12 @@ public interface UI {
 	public static final Logger output = LogManager.getLogger(UI.class.getName());
 	
 	/**
+	 * active context type
+	 */
+	
+	public enum context{MAIN_MENU, LIST_ALL_FILES, ADD_FILE, DELETE_FILE, SEARCH_FILE};
+	
+	/**
 	 * displays welcome message
 	 */
 	public void welcome();
@@ -28,6 +34,39 @@ public interface UI {
 	 * displays the main menu to the user.<br>
 	 */
 	public void displayMenu();
+	
+	/**
+	 * prompts for user choice for main menu context.
+	 */
+	public int promptUserChoiceForMenu();
+	
+	/**
+	 * displays a sub context where user can choose between adding a new file, deleting a file or returning to the main context.<br>
+	 */
+	public void displayListAllfilesContext();
+	
+	/**
+	 * prompts for user choice for list all files sub context
+	 */
+	public int promptUserChoiceForListAllFilesContext();
+
+	/**
+	 * displays a sub context where user can choose between listing all files, deleting a file or returning to the main context.<br>
+	 */
+	public void displaySubContext();
+	
+	/**
+	 * prompts for user choice for add files sub context
+	 */
+	public int promptUserChoiceForSubContex();
+	
+
+	
+	/**
+	 * loops the current active context
+	 */
+	public void loopActiveContext();
+	
 	/**
 	 * used to close the initialized resources.<br>
 	 */
