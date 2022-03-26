@@ -14,7 +14,12 @@ public class LockedMeImplementation {
 		user.welcome();
 		
 //		displaying menu
-		user.displayMenu();
+		while(user.isRunning())
+		{
+			user.displayMenu();
+			
+			UI.output.info("\n*****************************************************************\n*****************************************************************\n");
+		}
 		
 //		closing all the resources created by user
 		user.closeResources();

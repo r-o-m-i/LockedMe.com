@@ -27,7 +27,7 @@ public abstract class FileHandler {
 	 * @return
 	 */
 	private String promptFileName() {
-		User.output.info("Please enter a file name: ");
+		UI.output.info("Please enter a file name: ");
 		return User.input.nextLine();
 	}
 	
@@ -43,7 +43,7 @@ public abstract class FileHandler {
 		File newFile = new File("Files/" + fileName);
 		if(files.contains(newFile))
 		{
-			User.output.info(fileName + " already exists.");
+			UI.output.info(fileName + " already exists.");
 		}
 		else
 		{
@@ -51,11 +51,11 @@ public abstract class FileHandler {
 				boolean creationSuccessful = newFile.createNewFile();
 				if(creationSuccessful)
 				{
-					User.output.info(fileName + " added successfully.");
+					UI.output.info(fileName + " added successfully.");
 				}
 				else
 				{
-					User.output.info(fileName + " file can not be added.");
+					UI.output.info(fileName + " file can not be added.");
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -78,9 +78,9 @@ public abstract class FileHandler {
 		{
 			try {
 			if(files.get(files.indexOf(trash)).delete())
-				User.output.info(fileName + " deleted successfully.");
+				UI.output.info(fileName + " deleted successfully.");
 			else
-				User.output.info("Cannot delete file: " + fileName);
+				UI.output.info("Cannot delete file: " + fileName);
 			}
 			catch(Exception e)
 			{
@@ -89,7 +89,7 @@ public abstract class FileHandler {
 		}
 		else
 		{
-			User.output.info("File: \"" + fileName + "\" does not exist.");
+			UI.output.info("File: \"" + fileName + "\" does not exist.");
 		}
 	}
 	
@@ -106,11 +106,11 @@ public abstract class FileHandler {
 		
 		if(files.contains(findFile))
 		{
-			User.output.info(fileName + " exists at: " + files.get(files.indexOf(findFile)).getAbsolutePath());
+			UI.output.info(fileName + " exists at: " + files.get(files.indexOf(findFile)).getAbsolutePath());
 		}
 		else
 		{
-			User.output.info("File: \"" + fileName + "\" does not exist.");
+			UI.output.info("File: \"" + fileName + "\" does not exist.");
 		}
 	}
 	

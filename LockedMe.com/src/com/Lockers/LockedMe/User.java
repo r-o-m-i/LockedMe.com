@@ -9,6 +9,8 @@ import java.util.List;
  */
 public class User extends InputHandler implements UI {
 
+	private boolean running = true;
+	
 	public User(){
 		super();
 		output.info("Directory Created");
@@ -85,5 +87,10 @@ public class User extends InputHandler implements UI {
 		}
 	}
 
+//	getter methods
+
+	public boolean isRunning() {
+		return running;
+	}
 
 }

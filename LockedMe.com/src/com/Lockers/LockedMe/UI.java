@@ -17,7 +17,7 @@ public interface UI {
 	/**
 	 * global logger object for output.<br>
 	 */
-	public static final Logger output = LogManager.getLogger(User.class.getName());
+	public static final Logger output = LogManager.getLogger(UI.class.getName());
 	
 	/**
 	 * displays welcome message
