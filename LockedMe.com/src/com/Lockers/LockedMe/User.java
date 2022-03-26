@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.List;
 
 /**
- * Class that implements UserInterface "UI".<br>
+ * Class that implements UserInterface "UI" and extends Input handler and file handler.<br>
  * All the user data and operations are defined in this class.<br>
  */
 public class User extends InputHandler implements UI {
