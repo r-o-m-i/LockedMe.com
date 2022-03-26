@@ -1,0 +1,15 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!--Logging only onto the console for this project-->
+<Configuration status = "WARN">
+	<Appenders>
+		<Console name = "ConsoleAppender" target = "SYSTEM_OUT">
+		<!--Making it so that only the message gets printed along with the new line-->
+			<PatternLayout pattern = "%msg%n"/>
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Root level = "info">
+			<AppenderRef ref = "ConsoleAppender"/>
+		</Root>
+	</Loggers>
+</Configuration>
