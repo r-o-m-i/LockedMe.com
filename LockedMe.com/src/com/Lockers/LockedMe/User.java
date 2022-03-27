@@ -21,7 +21,7 @@ public class User extends InputHandler implements UI {
 	@Override
 	public void welcome()
 	{
-		output.info(GlobalConstants.STARS + "Application Name: LockedMe.com\nDeveloped By: Lockers Pvt Ltd." + GlobalConstants.STARS);
+		output.info(GlobalConstants.STARS + "Application Name: LockedMe.com\nDeveloper: Lockers Pvt Ltd.\nProgrammer: Rohit Goparaju" + GlobalConstants.STARS);
 	}
 	@Override
 	public void displayMenu() {
